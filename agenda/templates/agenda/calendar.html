@@ -1,0 +1,24 @@
+{% extends "bas3.html"%}
+{% load static %}
+
+{% block content %}
+<div class="flex flex-col text-center w-full mb-5">
+    <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">Agenda</h1>
+</div>
+<nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+    <a href="{% url 'calendar:event_new' %}" class="mr-5 hover:text-blue-500">Créer un nouvel évènements</a>
+</nav>
+<div class="ml-60 mt-5">
+    <div class="mx-3 mb-2 flex flex-wrap">
+        <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
+            <a href="{% url 'calendar:calendar' %}?{{ prev_month }}">Previous Month</a>
+        </button>
+        <a class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        </a>
+        <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
+            <a href="{% url 'calendar:calendar' %}?{{ next_month }}">Next Mouth</a>
+        </button>
+    </div>
+    {{ calendar }}
+</div>
+{% endblock %}

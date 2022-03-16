@@ -1,0 +1,104 @@
+{% extends "bas3.html"%}
+
+{% block content %}
+<nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+  <a href="{% url 'leads:lead_list' %}" class="mr-5 hover:text-blue-500">Retour</a>
+</nav>
+<section class="text-gray-600 body-font overflow-hidden">
+  <div class="container px-40 py-12 mx-auto">
+    <div class="lg:w-4/5 mx-auto flex flex-wrap space-between">
+      <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+        <h2 class="text-sm title-font text-gray-500 tracking-widest">LEAD</h2>
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{ lead.first_name }} {{ lead.last_name }}</h1>
+        <div class="flex mb-4">
+          <a class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">Description</a>
+        </div>
+        <p class="leading-relaxed mb-4">{{ lead.post }} {{ lead.company }}</p>
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Secteur d'activité</span>
+          <span class="ml-auto text-gray-900">Activity area</span>
+        </div>
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Age</span>
+          <span class="ml-auto text-gray-900">{{ lead.age  }}</span>
+        </div>
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Numéro de téléphone</span>
+          <span class="ml-auto text-gray-900">{{ lead.phone }}</span>
+        </div>
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Email</span>
+          <span class="ml-auto text-gray-900">{{ lead.email }}</span>
+        </div>
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Préférence de communication</span>
+          <span class="ml-auto text-gray-900">{{ lead.communication_preference }}</span>
+        </div>
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Loisir</span>
+          <span class="ml-auto text-gray-900">{{ lead.leisure }}</span>
+        </div>
+        {% if lead.linkedin is None %}
+        {% else %}
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Lien Linkedin</span>
+          <span class="ml-auto text-gray-900">{{ lead.linkedin }}</span>
+        </div>
+        {% endif %}
+        {% if lead.facebook is None %}
+        {% else %}
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Lien Facebook</span>
+          <span class="ml-auto text-gray-900">{{ lead.facebook }}</span></span>
+        </div>
+        {% endif %}
+        {% if lead.twitter is None %}
+        {% else %}
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Lien Twitter</span>
+          <span class="ml-auto text-gray-900">{{ lead.twitter }}</span>
+        </div>
+        {% endif %}
+        {% if lead.instagram is None %}
+        {% else %}
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Lien Instagram</span>
+          <span class="ml-auto text-gray-900">{{ lead.instagram }}</span>
+        </div>
+        {% endif %}
+        {% if lead.website is None %}
+        {% else %}
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Website</span>
+          <span class="ml-auto text-gray-900">{{ lead.website }}</span>
+        </div>
+        {% endif %}
+        {% if lead.other_social_media is None %}
+        {% else %}
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Autre Lien</span>
+          <span class="ml-auto text-gray-900">{{ lead.other_social_media }}</span>
+        </div>
+        {% endif %}
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Agent</span>
+          <span class="ml-auto text-gray-900">{{ lead.agent }}</span>
+        </div>
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Date d'ajout</span>
+          <span class="ml-auto text-gray-900">{{ lead.created_at }}</span>
+        </div>
+        <div class="flex">
+          <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+              <a href="{% url 'leads:lead_update' lead.pk %}">Mettre à jour</a>
+          </button>
+          <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+              <a href="{% url 'leads:lead_delete' lead.pk %}">Supprimer</a>
+          </button>
+        </div>
+      </div>
+      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400">
+    </div>
+  </div>
+</section>
+{% endblock %}
