@@ -172,6 +172,26 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
     form_class = CategoryModelForm
     success_url = '/leads/categories'
 
+    def form_valid(self, form):
+        category = form.save(commit=False)
+        category.organisation = self.request.user.userprofile
+        category.save()
+        return super(CategoryCreateView, self).form_valid(form)
+
+
+class CategoryUpdateView(LoginRequiredMixin, UpdateView):
+    template_name = 'leads/category_update.html'
+    form_class = CategoryModelForm
+    success_url = '/leads/categories'
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_organiser:
+            queryset = Category.objects.filter(organisation=user.userprofile)
+        else:
+            queryset = Category.objects.filter(organisation=user.agent.organisation)
+        return queryset
+
 
 '''
 def accueil(request):
