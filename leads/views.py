@@ -6,7 +6,7 @@ from django.views.generic import TemplateView, ListView, CreateView, DetailView,
 
 from agents.mixins import AgentAndLoginRequiredMixin
 from .models import Lead, Category
-from .forms import LeadModelForm, CustomUserCreationForm, AssignAgentForm, LeadCategoryUpdateForm
+from .forms import LeadModelForm, CustomUserCreationForm, AssignAgentForm, LeadCategoryUpdateForm, CategoryModelForm
 
 
 class HomePageView(TemplateView):
@@ -165,6 +165,12 @@ class LeadCategoryUpdateView(LoginRequiredMixin, UpdateView):
         else:
             queryset = Category.objects.filter(organisation=user.agent.organisation)
         return queryset
+
+
+class CategoryCreateView(LoginRequiredMixin, CreateView):
+    template_name = 'leads/category_create.html'
+    form_class = CategoryModelForm
+    success_url = '/leads/categories'
 
 
 '''

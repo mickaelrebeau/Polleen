@@ -14,4 +14,5 @@ urlpatterns = [
     path('categories/', CategoryListView.as_view(), name='category_list'),
     path('categories/<int:pk>/', CategoryDetailView.as_view(), name='category_detail'),
     path('<int:pk>/category/', LeadCategoryUpdateView.as_view(), name='lead_category_update'),
+    path('categories/create/', CategoryCreateView.as_view(), name='category_create'),
 ]
