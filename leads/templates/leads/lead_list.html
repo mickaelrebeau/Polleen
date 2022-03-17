@@ -1,20 +1,20 @@
 {% extends "bas3.html"%}
 
 {% block content %}
-<nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+<nav class="md:ml-auto md:mr-auto mt-10 flex flex-wrap items-center text-base justify-center">
   <a href="{% url 'leads:lead_create' %}" class="mr-5 hover:text-blue-500">Créer un nouveau lead</a>
   <a href="{% url 'home' %}" class="mr-5 hover:text-blue-500">Retour à l'accueil</a>
   <a href="{% url 'leads:category_list' %}" class="mr-5 hover:text-blue-500">Voir les catégories</a>
 </nav>
 <section class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto items-center">
+  <div class="container px-5 pt-10 pb-24 mx-auto items-center">
     <div class="flex flex-col text-center w-full mb-20">
       <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">Leads list</h1>
       <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Vous trouverez ici la liste de tout vos leads</p>
     </div>
     <div class="flex flex-wrap -m-4 ml-60 mt-5">
       {% for lead in leads %}
-      <div class="p-4 lg:w-1/2">
+      <div class="p-4 lg:w-1/2 bg-gray-100 border-0 py-1 px-3 focus:outline-none rounded-xl">
         <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
           <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="https://dummyimage.com/200x200">
           <div class="flex-grow sm:pl-8">

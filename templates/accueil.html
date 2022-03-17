@@ -3,14 +3,14 @@
 
 {% block content %}
 {% include 'sidenav.html' %}
-<section class="text-gray-600 body-font">
+<div class="h-screen pt-10 text-gray-600 body-font bg-gray-200">
   <div class="container mx-auto flex px-60 py-1 items-center justify-center flex-col">
     <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="{% static 'images/wait.png' %}">
     <div class="text-center lg:w-2/3 w-full">
       <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Polleen en cours de création</h1>
       <p class="mb-8 leading-relaxed">Ce CRM, développé par Mickaël Rébeau, est en cours de construction, veuillez patienter d'ici la fin du projet, merci.</p>
       <div class="flex justify-center">
-        <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+        <button class="inline-flex text-white bg-blue-900 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
             <a href="https://pollen-proservices.fr/">Pollen</a>
         </button>
         {% if request.user.is_agent %}
@@ -21,5 +21,5 @@
       </div>
     </div>
   </div>
-</section>
+</div>
 {% endblock %}
