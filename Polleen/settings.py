@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'leads',
     'agents',
     'agenda',
+    'docs',
 
     # Third party apps
     'crispy_forms',

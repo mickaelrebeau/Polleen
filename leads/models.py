@@ -54,6 +54,17 @@ class Lead(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 
+class Docs(models.Model):
+    image = models.ImageField(blank=True, null=True, default=None)
+    title = models.CharField(max_length=100, default=None)
+    description = models.TextField(default=None)
+    author_1 = models.CharField(max_length=100, default=None)
+    author_2 = models.CharField(max_length=100, default=None)
+
+    def __str__(self):
+        return self.title
+
+
 class Category(models.Model):
     name = models.CharField(max_length=30)  # New, Contacted, Converted, Unconverted
     organisation = models.ForeignKey(UserProfile, on_delete=models.CASCADE, default=None)

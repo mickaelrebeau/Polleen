@@ -13,6 +13,7 @@ urlpatterns = [
     path('leads/', include('leads.urls', namespace="leads")),
     path('agents/', include('agents.urls', namespace="agents")),
     path('agenda/', include('agenda.urls', namespace="calendar")),
+    path('docs/', include('docs.urls', namespace="docs")),
     path('login/', LoginView.as_view(), {'registration': 'login.html'}, name='login'),
     path('signup/', SignupView.as_view(), {'registration': 'signup.html'}, name='signup'),
     path('password_reset/', PasswordResetView.as_view(), name='password_reset'),
