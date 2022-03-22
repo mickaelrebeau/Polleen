@@ -1,16 +1,14 @@
 from django import forms
-from django.contrib.auth import get_user_model
-
-
-User = get_user_model()
+from docs.models import Docs
 
 
 class DocsModelForm(forms.ModelForm):
     class Meta:
-        model = User
+        model = Docs
         fields = [
+            'image',
             'title',
             'description',
-            'author name 1',
-            'author name 2',
+            'author_1',
+            'author_2',
         ]

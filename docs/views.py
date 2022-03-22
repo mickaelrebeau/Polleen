@@ -1,20 +1,22 @@
 import random
+
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
-from agents.mixins import AgentAndLoginRequiredMixin
 from docs.forms import DocsModelForm
-from leads.models import Docs, Agent
+from leads.models import Agent
+from docs.models import Docs
 
 
-class DocsListView(AgentAndLoginRequiredMixin, ListView):
+class DocsListView(LoginRequiredMixin, ListView):
     template_name = 'docs/docs_list.html'
 
     def get_queryset(self):
-        organisation = self.request.user.userprofile
-        return Docs.objects.filter(organisation=organisation)
+        queryset = Docs.objects.all()
+        return queryset
 
 
-class DocsCreateView(AgentAndLoginRequiredMixin, CreateView):
+class DocsCreateView(LoginRequiredMixin, CreateView):
     template_name = 'docs/docs_create.html'
     form_class = DocsModelForm
     success_url = '/agents'
@@ -28,7 +30,7 @@ class DocsCreateView(AgentAndLoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class DocsDetailView(AgentAndLoginRequiredMixin, DetailView):
+class DocsDetailView(LoginRequiredMixin, DetailView):
     template_name = 'agents/agents_detail.html'
     queryset = Agent.objects.all()
     context_object_name = 'agent'
@@ -38,7 +40,7 @@ class DocsDetailView(AgentAndLoginRequiredMixin, DetailView):
         return Agent.objects.filter(organisation=organisation)
 
 
-class DocsUpdateView(AgentAndLoginRequiredMixin, UpdateView):
+class DocsUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'docs/docs_update.html'
     model = Docs
     form_class = DocsModelForm
@@ -48,7 +50,7 @@ class DocsUpdateView(AgentAndLoginRequiredMixin, UpdateView):
         return Agent.objects.all()
 
 
-class DocsDeleteView(AgentAndLoginRequiredMixin, DeleteView):
+class DocsDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'docs/docs_delete.html'
     model = Docs
     success_url = '/docs'
