@@ -1,10 +1,6 @@
-import random
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
-
 from docs.forms import DocsModelForm
-from leads.models import Agent
 from docs.models import Doc
 
 
