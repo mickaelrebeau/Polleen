@@ -1,10 +1,10 @@
 from django import forms
-from docs.models import Docs
+from docs.models import Doc
 
 
 class DocsModelForm(forms.ModelForm):
     class Meta:
-        model = Docs
+        model = Doc
         fields = [
             'image',
             'title',
