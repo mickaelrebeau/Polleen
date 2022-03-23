@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+from agents.mixins import AgentAndLoginRequiredMixin
 
-# Create your views here.
+
+class IaView(AgentAndLoginRequiredMixin, ListView):
+    pass

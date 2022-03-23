@@ -49,7 +49,7 @@ finalScroll = 200
 while True:
     browser.execute_script(f"window.scrollTo({initialScroll},{finalScroll})")
     initialScroll = finalScroll
-    finalScroll += 200
+    finalScroll += 100
     sleep(2)
     end = time()
     if round(end - start) > 20:
@@ -59,10 +59,10 @@ src = browser.page_source
 soup = bs(src, 'lxml')
 prospects = soup.select('a.discover-entity-type-card__link')
 # if the csv file doesn't exist, create it
-if not os.path.exists('../Contact-Recommander/profile_scrape.csv'):
+if not os.path.exists('../Polleen/ia/profile_scrape.csv'):
     df = pd.DataFrame()
 else:
-    df = pd.read_csv('../Contact-Recommander/profile_scrape.csv')
+    df = pd.read_csv('../Polleen/ia/profile_scrape.csv')
 
 for prospect in prospects:
     if prospect["href"].startswith("/in"):
