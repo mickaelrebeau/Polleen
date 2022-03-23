@@ -1,11 +1,19 @@
 import csv
 import os
 from selenium import webdriver
-from selenium.webdriver import Firefox
 from selenium.webdriver.chrome.service import Service
 from bs4 import BeautifulSoup as bs
 from time import time, sleep
 import pandas as pd
+import environ
+from Polleen.settings import BASE
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+
+environ.Env.read_env(os.path.join(BASE, '0.env'))
 
 # For use Chrome
 s = Service('chromedriver_win32/chromedriver.exe')
@@ -15,19 +23,11 @@ options.add_argument('--headless')
 browser = webdriver.Chrome(service=s, options=options)
 # browser.maximize_window()
 
-'''
-# For use Firefox 
-firefoxOptions = Options() 
-firefoxOptions.add_argument("-headless") 
-browser = Firefox(executable_path='C:\\Users\\utilisateur\\PycharmProjects\\Scraping-Linkedin\\geckodriver-v0.30.0-win64\\geckodriver.exe', options=firefoxOptions) 
-# browser.maximize_window() 
-'''
-
 # Open login page
 browser.get('https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin')
 
-username = 'rebeau.mickael@gmail.com'
-password = '@MickaeL97310@'
+username = env('LINKEDIN_USERNAME')
+password = env('LINEDIN_PASSWORD')
 
 # Enter login information
 elementID = browser.find_element_by_id('username')
