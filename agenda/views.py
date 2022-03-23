@@ -8,7 +8,7 @@ from django.urls import reverse, reverse_lazy
 from django.utils.safestring import mark_safe
 import calendar
 
-from leads.models import Lead
+from leads.models import InvitedLead
 from .models import *
 from .utils import Calendar
 from .forms import EventForm

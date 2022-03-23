@@ -2,9 +2,15 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UsernameField
 
-from .models import Lead, Agent, Category
+from .models import *
 
 User = get_user_model()
+
+
+class InvitedLeadModelForm(forms.ModelForm):
+    class Meta:
+        fields = '__all__'
+        model = InvitedLead
 
 
 class LeadModelForm(forms.ModelForm):
@@ -32,6 +38,25 @@ class LeadForm(forms.Form):
     instagram = forms.URLField(max_length=100)
     website = forms.URLField(max_length=100)
     other_social_media = forms.URLField(max_length=100)
+
+
+class InvitedLeadForm(forms.Form):
+    profile_picture = forms.ImageField()
+    logo = forms.ImageField()
+    first_name = forms.CharField(max_length=100)
+    last_name = forms.CharField(max_length=100)
+    age = forms.IntegerField(min_value=0, max_value=100)
+    company = forms.CharField(max_length=100)
+    post = forms.CharField(max_length=100)
+    email = forms.EmailField()
+    phone = forms.CharField(min_length=0, max_length=10)
+    linkedin = forms.URLField(max_length=100)
+    facebook = forms.URLField(max_length=100)
+    twitter = forms.URLField(max_length=100)
+    instagram = forms.URLField(max_length=100)
+    website = forms.URLField(max_length=100)
+    other_social_media = forms.URLField(max_length=100)
+    invited_by = forms.CharField(max_length=100)
 
 
 class CustomUserCreationForm(UserCreationForm):

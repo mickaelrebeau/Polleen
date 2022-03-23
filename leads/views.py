@@ -5,8 +5,9 @@ from django.views import generic
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 
 from agents.mixins import AgentAndLoginRequiredMixin
-from .models import Lead, Category
-from .forms import LeadModelForm, CustomUserCreationForm, AssignAgentForm, LeadCategoryUpdateForm, CategoryModelForm
+from .models import InvitedLead, Category, Lead
+from .forms import LeadModelForm, CustomUserCreationForm, AssignAgentForm, LeadCategoryUpdateForm, CategoryModelForm, \
+    InvitedLeadModelForm
 
 
 class HomePageView(TemplateView):
@@ -191,6 +192,38 @@ class CategoryUpdateView(LoginRequiredMixin, UpdateView):
         else:
             queryset = Category.objects.filter(organisation=user.agent.organisation)
         return queryset
+
+
+class InvitedLeadListView(ListView):
+    template_name = 'leads/invited_lead_list.html'
+    context_object_name = 'leads'
+    queryset = InvitedLead.objects.all()
+
+
+class InvitedLeadCreateView(CreateView):
+    template_name = 'leads/invited_lead_create.html'
+    form_class = InvitedLeadModelForm
+    success_url = '/leads/invitedleads'
+
+
+class InvitedLeadDetailView(DetailView):
+    template_name = 'leads/invited_lead_detail.html'
+    context_object_name = 'lead'
+    queryset = InvitedLead.objects.all()
+
+
+class InvitedLeadUpdateView(UpdateView):
+    template_name = 'leads/invited_lead_update.html'
+    model = InvitedLead
+    form_class = InvitedLeadModelForm
+    success_url = '/leads/invitedleads'
+    queryset = InvitedLead.objects.all()
+
+
+class InvitedLeadDeleteView(DeleteView):
+    template_name = 'leads/invited_lead_delete.html'
+    model = InvitedLead
+    success_url = '/leads/invitedleads'
 
 
 '''

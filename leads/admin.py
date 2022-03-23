@@ -4,6 +4,6 @@ from .models import *
 
 admin.site.register(User)
 admin.site.register(UserProfile)
-admin.site.register(Lead)
+admin.site.register(InvitedLead)
 admin.site.register(Agent)
 admin.site.register(Category)
