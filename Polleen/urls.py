@@ -12,7 +12,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('leads/', include('leads.urls', namespace="leads")),
     path('agents/', include('agents.urls', namespace="agents")),
-    path('agenda/', include('agenda.urls', namespace="calendar")),
     path('docs/', include('docs.urls', namespace="docs")),
     path('login/', LoginView.as_view(), {'registration': 'login.html'}, name='login'),
     path('signup/', SignupView.as_view(), {'registration': 'signup.html'}, name='signup'),

@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     # Local apps
     'leads',
     'agents',
-    'agenda',
     'docs',
 
     # Third party apps
