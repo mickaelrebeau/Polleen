@@ -1,12 +1,19 @@
 import csv
 import os
+import django
+import psycopg2
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from bs4 import BeautifulSoup as bs
 from time import time, sleep
 import pandas as pd
 import environ
-from Polleen.settings import BASE
+from Polleen.settings import BASE, INSTALLED_APPS
+from ia.models import *
+
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'Polleen.settings'
+django.setup()
 
 env = environ.Env(
     # set casting, default value
@@ -14,6 +21,7 @@ env = environ.Env(
 )
 
 environ.Env.read_env(os.path.join(BASE, '0.env'))
+
 
 # For use Chrome
 s = Service('chromedriver_win32/chromedriver.exe')
@@ -130,8 +138,18 @@ for prospect in prospects:
             "Email": email, "Url profile": profile_url
         }
         # save data in csv from a dict
-        data = pd.DataFrame.from_dict([data])
-        df = df.append(data, ignore_index=True)
+        data = data.append(data, ignore_index=True)
+        Ia.objects.create(
+            name=data.txt("name"),
+            description=data.txt("description"),
+            location=data.txt("location"),
+            post=data.txt("post"),
+            company=data.txt("company"),
+            email=data.txt("email"),
+            url_profile=data.txt("profile_url"))
+
+        # data = pd.DataFrame.from_dict([data])
+        # df = df.append(data, ignore_index=True)
         '''
         Show the information
         print("Name -->", name,
@@ -144,6 +162,5 @@ for prospect in prospects:
               )
         '''
 
-df.to_csv(r'profile_scrape.csv', encoding='utf-8', index=False, header=True)
-
+# df.to_csv(r'profile_scrape.csv', encoding='utf-8', index=False, header=True)
 browser.quit()
