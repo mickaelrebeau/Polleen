@@ -8,5 +8,5 @@ from ia.models import Ia
 class IaView(AgentAndLoginRequiredMixin, ListView):
     template_name = 'ia/ia.html'
     context_object_name = 'ia_list'
-    data = pd.read_csv('ia/data/ia_data.csv')
+    data = pd.read_csv('ia/profile_scrape.csv')
     queryset = (Ia.objects.all(), data)
