@@ -2,15 +2,15 @@
 {% load tailwind_filters %}
 
 {% block content %}
-<nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+<nav class="md:ml-auto md:mr-auto py-5 flex flex-wrap items-center text-base justify-center bg-yellow-400">
     <a href="{% url 'docs:docs_list' %}" class="mr-5 hover:text-blue-500">Annuler</a>
 </nav>
 <div class="flex flex-col text-center w-full ">
-    <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">Nouvelle Archive</h1>
+    <h1 class="text-2xl font-medium title-font mt-2 text-gray-900 tracking-widest">Nouvelle Archive</h1>
 </div>
 <div class="ml-80 flex items-center justify-center p-6 sm:p-12 md:w-1/2">
     <div class="w-full">
-        <div class="px-8 py-6 mt-4 text-left bg-white shadow-lg">
+        <div class="px-8 py-2 my-5 text-left bg-white shadow-lg">
             <form method="post">
                 {% csrf_token %}
                 {{ form|crispy }}

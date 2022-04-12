@@ -24,7 +24,7 @@
           <h2 class="text-2xl text-gray-900 font-medium title-font mb-2">{{ doc.title }}</h2>
           <p class="leading-relaxed">{{ doc.description }}</p>
           <p class="leading-relaxed">Animé par {{ doc.author_1 }} et {{ doc.author_2 }}</p>
-          <a class="mt-3 text-indigo-500 inline-flex items-center">Voir plus
+          <a href="{% url 'docs:docs_detail' doc.pk %}" class="mt-3 text-indigo-500 inline-flex items-center">Voir plus
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
