@@ -1,11 +1,12 @@
 {% extends "bas3.html"%}
 
 {% block content %}
-<nav class="md:ml-auto md:mr-auto mt-10 flex flex-wrap items-center text-base justify-center">
+<nav class="md:ml-auto md:mr-auto pt-5 pb-5 flex flex-wrap items-center text-base justify-center bg-yellow-300">
   <a href="{% url 'home' %}" class="mr-5 hover:text-blue-500">Retour à l'accueil</a>
+  <a href="{% url 'ia:ia_history' %}" class="mr-5 hover:text-blue-500">Voir l'historique</a>
 </nav>
 <section class="text-gray-600 body-font">
-  <div class="container px-5 pt-10 pb-24 mx-auto items-center">
+  <div class="container px-5 pt-5 pb-24 mx-auto items-center">
     <div class="flex flex-col text-center w-full mb-20">
       <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">Contact Recommander</h1>
       <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Vous trouverez ici la liste des contacts recommander</p>
