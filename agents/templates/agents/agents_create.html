@@ -1,16 +1,18 @@
-{% extends "base.html" %}
+{% extends "bas3.html" %}
 {% load tailwind_filters %}
 
 {% block content %}
-<nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+<nav class="md:ml-auto md:mr-auto py-5 flex flex-wrap items-center text-base justify-center bg-yellow-400">
     <a href="{% url 'agents:agents_list' %}" class="mr-5 hover:text-blue-500">Annuler</a>
 </nav>
-<h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">Nouveau Agent</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="submit" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-        Submit
-    </button>
-</form>
+<div class="container px-5 pt-5 pb-24 mx-auto ml-60 mt-5">
+    <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">Nouveau Agent</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+            Submit
+        </button>
+    </form>
+</div>
 {% endblock %}
