@@ -3,23 +3,24 @@
 
 {% block content %}
 {% include 'sidenav.html' %}
-<div class="h-screen pt-10 text-gray-600 body-font bg-gray-200">
-  <div class="container mx-auto flex px-60 py-1 items-center justify-center flex-col">
-    <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="{% static 'images/wait.png' %}">
-    <div class="text-center lg:w-2/3 w-full">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Polleen en cours de création</h1>
-      <p class="mb-8 leading-relaxed">Ce CRM, développé par Mickaël Rébeau, est en cours de construction, veuillez patienter d'ici la fin du projet, merci.</p>
-      <div class="flex justify-center">
-        <button class="inline-flex text-white bg-blue-900 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-            <a href="https://pollen-proservices.fr/">Pollen</a>
-        </button>
-        {% if request.user.is_agent %}
-        <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
-          <a href="{% url 'agents:agents_list' %}">Agents</a>
-        </button>
-        {% endif %}
-      </div>
+<section class="text-gray-600 body-font">
+  <nav class="md:ml-auto md:mr-auto pt-5 pb-5 flex flex-wrap items-center text-base justify-center bg-yellow-400">
+    <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">Notifications</h1>
+  </nav>
+  <div class="container px-5 pt-5 pb-24 mx-auto items-center">
+    <div class="flex flex-col text-center w-full mb-20">
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Vous trouverez ici vos dernières notifications</p>
     </div>
   </div>
-</div>
+</section>
+<section class="text-gray-600 body-font">
+  <nav class="md:ml-auto md:mr-auto pt-5 pb-5 flex flex-wrap items-center text-base justify-center bg-yellow-400">
+    <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">Actualités</h1>
+  </nav>
+  <div class="container px-5 pt-5 pb-24 mx-auto items-center">
+    <div class="flex flex-col text-center w-full mb-20">
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Vous trouverez ici les dernières actualités de Pollen et Polleen</p>
+    </div>
+  </div>
+</section>
 {% endblock %}
