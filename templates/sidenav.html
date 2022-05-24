@@ -4,27 +4,27 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
-<div class="bg-blue-900 w-60 h-full shadow-md px-1 absolute">
-  <ul class="relative">
+<div class="pollen1 w-60 h-full shadow-md px-1 absolute">
+  <ul class="relative mt-5">
     <li class="relative">
-      <a href="{% url 'home' %}" class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark">Accueil</a>
+      <a href="{% url 'home' %}" class="flex items-center text-xl py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark">Accueil</a>
     </li>
     <li class="relative">
-      <a href="{% url 'leads:lead_list' %}" class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark">Répertoire</a>
+      <a href="{% url 'leads:lead_list' %}" class="flex items-center text-xl py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark">Répertoire</a>
     </li>
     {% if request.user.is_agent %}
     <li class="relative">
-      <a href="{% url 'ia:ia' %}" class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">Contact recommander</a>
+      <a href="{% url 'ia:ia' %}" class="flex items-center text-xl py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">Contact recommander</a>
     </li>
     {% endif %}
     <li class="relative">
-      <a class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">Forum (Soon..)</a>
+      <a class="flex items-center text-xl py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">Forum (Soon..)</a>
     </li>
     <li class="relative">
-      <a class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">Messagerie (Soon..)</a>
+      <a class="flex items-center text-xl py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">Messagerie (Soon..)</a>
     </li>
     <li class="relative">
-      <a href="{% url 'docs:docs_list' %}" class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">Documentation</a>
+      <a href="{% url 'docs:docs_list' %}" class="flex items-center text-xl py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">Documentation</a>
     </li>
   </ul>
 </div>

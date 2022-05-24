@@ -3,11 +3,11 @@
 {% load tailwind_filters %}
 
 {% block content %}
-<header class="text-gray-600 body-font bg-blue-900">
-  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+<header class="text-gray-600 body-font pollen1">
+  <div class="mx-2 flex flex-wrap flex-col md:flex-row items-center">
     <a class="flex title-font font-medium items-center mb-4 md:mb-0">
       <img src="{% static 'images/Polleen.png' %}" fill="none" stroke="currentColor"
-           class="w-50 h-20 text-white p-2" viewBox="0 0 24 24">
+           class="w-50 h-20 text-white" viewBox="0 0 24 24">
         <path d="M12 14l9-5-9-5-9 5 9 5z" />
         <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952
@@ -17,7 +17,7 @@
     <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
       <a class="mr-5 text-white">Bienvenue, {{ request.user.username }}</a>
     </nav>
-    <button class="inline-flex items-center text-white bg-blue-500 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 hover:text-black rounded text-base mt-4 md:mt-0">
+    <button class="inline-flex items-center text-white pollen4 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 hover:text-black rounded text-base mt-4 md:mt-0">
       <a href="{% url 'login' %}">Déconnexion</a>
       <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
         <path d="M5 12h14M12 5l7 7-7 7"></path>

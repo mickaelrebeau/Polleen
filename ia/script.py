@@ -1,14 +1,13 @@
-import csv
 import os
 import django
-import psycopg2
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup as bs
 from time import time, sleep
 import pandas as pd
 import environ
-from Polleen.settings import BASE, INSTALLED_APPS
+from Polleen.settings import BASE
 from ia.models import *
 
 
@@ -22,13 +21,19 @@ env = environ.Env(
 
 environ.Env.read_env(os.path.join(BASE, '0.env'))
 
+# if the csv file doesn't exist, create it
+if not os.path.exists('profile_scrape.csv'):
+    df = pd.DataFrame()
+else:
+    df = pd.read_csv('profile_scrape.csv')
+
 
 # For use Chrome
 s = Service('chromedriver_win32/chromedriver.exe')
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
 
-browser = webdriver.Chrome(service=s, options=options)
+browser = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 # browser.maximize_window()
 
 # Open login page
@@ -66,11 +71,6 @@ while True:
 src = browser.page_source
 soup = bs(src, 'lxml')
 prospects = soup.select('a.discover-entity-type-card__link')
-# if the csv file doesn't exist, create it
-if not os.path.exists('../Polleen/ia/profile_scrape.csv'):
-    df = pd.DataFrame()
-else:
-    df = pd.read_csv('../Polleen/ia/profile_scrape.csv')
 
 for prospect in prospects:
     if prospect["href"].startswith("/in"):
@@ -78,6 +78,19 @@ for prospect in prospects:
         profile_url = "https://www.linkedin.com" + prospect["href"]
         browser.get(profile_url)
         sleep(2)
+
+        start = time()
+        initialScroll = 0
+        finalScroll = 100
+
+        while True:
+            browser.execute_script(f"window.scrollTo({initialScroll},{finalScroll})")
+            initialScroll = finalScroll
+            finalScroll += 100
+            sleep(2)
+            end = time()
+            if round(end - start) > 20:
+                break
 
         src = browser.page_source
         soup = bs(src, 'lxml')
@@ -98,11 +111,20 @@ for prospect in prospects:
             description = description_loc.get_text().strip()
 
         # Extracting the Post
-        post_loc = soup.select_one("#experience-section ul li:first-child h3")
+        post_loc = soup.find("div", {'class': 'display-flex align-items-center'})
+        post_get = post_loc.select_one(".visually-hidden")
         post = None
 
-        if post_loc:
-            post = post_loc.get_text().strip()
+        if post_get:
+            post = post_get.get_text().strip()
+
+        # Extracting the time in post
+        time_in_post_loc = soup.find("div", {'class': 'display-flex flex-column full-width'})
+        time_in_post_get = time_in_post_loc.select_one(".t-14.t-normal.t-black--light span")
+        time_in_post = None
+
+        if time_in_post_get:
+            time_in_post = time_in_post_get.get_text().strip()
 
         # Extracting the Company Name
         company_loc = soup.select_one("[aria-label='Entreprise actuelle']")
@@ -134,8 +156,8 @@ for prospect in prospects:
 
         # Save data
         data = {
-            "Name": name, "Description": description, "Location": location, "Post": post, "Company": company,
-            "Email": email, "Url profile": profile_url
+            "Name": name, "Description": description, "Location": location, "Post": post, "Time": time_in_post,
+            "Company": company, "Email": email, "Url profile": profile_url
         }
         # save data in csv from a dict
         data = data.append(data, ignore_index=True)
@@ -144,23 +166,13 @@ for prospect in prospects:
             description=data.txt("description"),
             location=data.txt("location"),
             post=data.txt("post"),
+            time_in_post=data.txt("time_in_post"),
             company=data.txt("company"),
             email=data.txt("email"),
             url_profile=data.txt("profile_url"))
 
-        # data = pd.DataFrame.from_dict([data])
-        # df = df.append(data, ignore_index=True)
-        '''
-        Show the information
-        print("Name -->", name,
-              "\nTitle -->", title,
-              "\nLocation -->", location,
-              "\nPost -->", post,
-              "\nCompany -->", company,
-              "\nMail -->", email,
-              "\nProfil URL -->", profil_url,
-              )
-        '''
+        data = pd.DataFrame.from_dict([data])
+        df = df.append(data, ignore_index=True)
 
-# df.to_csv(r'profile_scrape.csv', encoding='utf-8', index=False, header=True)
+df.to_csv(r'profile_scrape.csv', encoding='utf-8', index=False, header=True)
 browser.quit()

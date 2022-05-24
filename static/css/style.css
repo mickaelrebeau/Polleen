@@ -1,3 +1,126 @@
-.cbob{
+.pollen1{
+       background-color: #00457a;
+}
+.pollen2{
+       background-color: #f05152;
+}
+.pollen3{
+       background-color: #ffc907;
+}
+.pollen4{
        background-color: #08a6ab;
+}
+.text-pollen1{
+    color: #00457a;
+}
+.text-pollen2{
+    color: #f05152;
+}
+.text-pollen3{
+    color: #ffc907;
+}
+.text-pollen4{
+    color: #08a6ab;
+}
+
+
+
+.frame a {
+  color: black;
+  padding: 0.7em calc(0.7em * 1.2);
+  display: inline-block;
+  border: 3px solid transparent;
+  position: relative;
+  font-size: 1em;
+  cursor: pointer;
+  letter-spacing: 0.07em;
+}
+.frame a .text {
+  transform: translate3d(0, 0.7em, 0);
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1) 0.4s;
+}
+.frame a:after {
+  position: absolute;
+  content: "";
+  bottom: -3px;
+  left: calc(0.7em * 1.2);
+  right: calc(0.7em * 1.2);
+  height: 3px;
+  background: #f05152;
+  transition: transform 0.8s cubic-bezier(1, 0, 0.37, 1) 0.2s, right 0.2s cubic-bezier(0.04, 0.48, 0, 1) 0.6s, left 0.4s cubic-bezier(0.04, 0.48, 0, 1) 0.6s;
+  transform-origin: left;
+}
+.frame .line {
+  position: absolute;
+  background: #f05152;
+}
+.frame .line.-right, .frame .line.-left {
+  width: 3px;
+  bottom: -3px;
+  top: -3px;
+  transform: scale3d(1, 0, 1);
+}
+.frame .line.-top, .frame .line.-bottom {
+  height: 3px;
+  left: -3px;
+  right: -3px;
+  transform: scale3d(0, 1, 1);
+}
+.frame .line.-right {
+  right: -3px;
+  transition: transform 0.1s cubic-bezier(1, 0, 0.65, 1.01) 0.23s;
+  transform-origin: top;
+}
+.frame .line.-top {
+  top: -3px;
+  transition: transform 0.08s linear 0.43s;
+  transform-origin: left;
+}
+.frame .line.-left {
+  left: -3px;
+  transition: transform 0.08s linear 0.51s;
+  transform-origin: bottom;
+}
+.frame .line.-bottom {
+  bottom: -3px;
+  transition: transform 0.3s cubic-bezier(1, 0, 0.65, 1.01);
+  transform-origin: right;
+}
+.frame a:hover .text,
+.frame a:active .text {
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1) 0.4s;
+}
+.frame a:hover:after,
+.frame a:active:after {
+  transform: scale3d(0, 1, 1);
+  right: -3px;
+  left: -3px;
+  transform-origin: right;
+  transition: transform 0.2s cubic-bezier(1, 0, 0.65, 1.01) 0.17s, right 0.2s cubic-bezier(1, 0, 0.65, 1.01), left 0s 0.3s;
+}
+.frame a:hover .line,
+.frame a:active .line {
+  transform: scale3d(1, 1, 1);
+}
+.frame a:hover .line.-right,
+.frame a:active .line.-right {
+  transition: transform 0.1s cubic-bezier(1, 0, 0.65, 1.01) 0.2s;
+  transform-origin: bottom;
+}
+.frame a:hover .line.-top,
+.frame a:active .line.-top {
+  transition: transform 0.08s linear 0.4s;
+  transform-origin: right;
+}
+.frame a:hover .line.-left,
+.frame a:active .line.-left {
+  transition: transform 0.08s linear 0.48s;
+  transform-origin: top;
+}
+.frame a:hover .line.-bottom,
+.frame a:active .line.-bottom {
+  transition: transform 0.5s cubic-bezier(0, 0.53, 0.29, 1) 0.56s;
+  transform-origin: left;
 }
