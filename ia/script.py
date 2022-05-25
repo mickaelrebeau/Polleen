@@ -40,7 +40,7 @@ browser = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 browser.get('https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin')
 
 username = env('LINKEDIN_USERNAME')
-password = env('LINEDIN_PASSWORD')
+password = env('LINKEDIN_PASSWORD')
 
 # Enter login information
 elementID = browser.find_element_by_id('username')

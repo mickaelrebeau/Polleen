@@ -2,23 +2,36 @@
 {% load tailwind_filters %}
 
 {% block content %}
-<nav class="md:ml-auto md:mr-auto pt-5 pb-5 flex flex-wrap items-center text-base justify-center bg-yellow-400">
-    <a href="{% url 'leads:lead_list' %}" class="mr-5 hover:text-blue-500">Annuler</a>
-</nav>
-<div class="flex flex-col text-center w-full ">
-    <h1 class="text-2xl font-medium title-font mt-2 text-gray-900 tracking-widest">Nouveau Lead Public</h1>
-</div>
-<div class="ml-80 flex items-center justify-center p-6 sm:p-12 md:w-1/2">
-    <div class="w-full">
-        <div class="px-8 py-6 mt-4 text-left bg-white shadow-lg">
-            <form method="post">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <button type="submit" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                    Submit
-                </button>
-            </form>
+<section class="pl-60 pb-24">
+  <nav class="md:ml-auto md:mr-auto pt-5 pb-5 flex flex-wrap items-center text-base justify-center pollen3">
+    <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">Nouveau Contact Public</h1>
+  </nav>
+  <nav class="md:ml-auto md:mr-auto pt-5 pb-5 flex flex-wrap items-center text-base justify-center">
+    <section class="frame mr-5">
+      <a href="{% url 'leads:invited_lead_list' %}">
+        <span class="text">Annuler</span>
+        <span class="line -right"></span>
+        <span class="line -top"></span>
+        <span class="line -left"></span>
+        <span class="line -bottom"></span>
+      </a>
+    </section>
+  </nav>
+    <div class="flex flex-col text-center w-full ">
+        <h1 class="text-2xl font-medium title-font mt-2 text-gray-900 tracking-widest">Nouveau Lead Public</h1>
+    </div>
+    <div class="lg:ml-80 flex items-center justify-center p-6 sm:ml-5 sm:p-12 md:w-1/2">
+        <div class="w-full">
+            <div class="px-8 py-6 mt-4 text-left bg-white shadow-lg">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button type="submit" class="inline-flex text-white pollen4 border-0 mt-5 py-2 px-6 focus:outline-none hover:bg-gray-400 rounded text-lg">
+                        Submit
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}
