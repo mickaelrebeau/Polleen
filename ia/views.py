@@ -43,10 +43,10 @@ def output(request):
     environ.Env.read_env(os.path.join(BASE, '0.env'))
 
     # if the csv file doesn't exist, create it
-    if not os.path.exists('profile_scrape.csv'):
+    if not os.path.exists('ia/profile_scrape.csv'):
         df = pd.DataFrame()
     else:
-        df = pd.read_csv('profile_scrape.csv')
+        df = pd.read_csv('ia/profile_scrape.csv')
 
     # For use Chrome
     s = Service('chromedriver_win32/chromedriver.exe')
@@ -183,6 +183,6 @@ def output(request):
             data = pd.DataFrame.from_dict([data])
             df = df.append(data, ignore_index=True)
 
-    df.to_csv(r'profile_scrape.csv', encoding='utf-8', index=False, header=True)
+    df.to_csv(r'ia/profile_scrape.csv', encoding='utf-8', index=False, header=True)
     browser.quit()
     return render(request, 'ia/ia.html')

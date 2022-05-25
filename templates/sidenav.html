@@ -12,6 +12,9 @@
     <li class="relative">
       <a href="{% url 'leads:lead_list' %}" class="flex items-center text-xl py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark">Répertoire</a>
     </li>
+    <li class="relative">
+      <a href="{% url 'leads:invited_lead_list' %}" class="flex items-center text-xl py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark">Répertoire Public</a>
+    </li>
     {% if request.user.is_agent %}
     <li class="relative">
       <a href="{% url 'ia:ia' %}" class="flex items-center text-xl py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">Contact recommander</a>

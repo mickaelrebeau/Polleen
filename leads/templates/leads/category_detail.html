@@ -1,35 +1,55 @@
 {% extends "bas3.html"%}
 
 {% block content %}
-<nav class="md:ml-auto md:mr-auto pt-5 pb-5 flex flex-wrap items-center text-base justify-center bg-yellow-400">
-  <a href="{% url 'leads:category_list' %}" class="mr-5 hover:text-blue-500">Retour</a>
-  <a href="{% url 'leads:category_update' category.pk %}" class="mr-5 hover:text-blue-500">Update</a>
-</nav>
-<section class="text-gray-600 body-font">
-  <div class="container px-5 pb-24 mx-auto mt-5">
-    <div class="flex flex-col text-center w-full mb-20">
-      <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">{{ category.name }}</h1>
-      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">These are the leads under this category</p>
+<section class="pl-60 pb-24">
+  <nav class="md:ml-auto md:mr-auto pt-5 pb-5 flex flex-wrap items-center text-base justify-center pollen3">
+    <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">{{ category.name }}</h1>
+  </nav>
+  <nav class="md:ml-auto md:mr-auto pt-5 pb-5 flex flex-wrap items-center text-base justify-center">
+    <section class="frame mr-5">
+      <a href="{% url 'leads:category_list' %}">
+        <span class="text">Retour</span>
+        <span class="line -right"></span>
+        <span class="line -top"></span>
+        <span class="line -left"></span>
+        <span class="line -bottom"></span>
+      </a>
+    </section>
+    <section class="frame mr-5">
+      <a href="{% url 'leads:category_update' category.pk %}">
+        <span class="text">Mettre à jour</span>
+        <span class="line -right"></span>
+        <span class="line -top"></span>
+        <span class="line -left"></span>
+        <span class="line -bottom"></span>
+      </a>
+    </section>
+  </nav>
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 pb-24 mx-auto mt-5">
+      <div class="flex flex-col text-center w-full mb-20">
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Voici la liste des contacts sous cette catégorie</p>
+      </div>
+      <div class="lg:w-2/3 w-full mx-auto overflow-auto">
+        <table class="table-auto w-full text-left whitespace-no-wrap">
+          <thead>
+            <tr>
+              <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">Prénom</th>
+              <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Nom</th>
+              <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for lead in category.leads.all %}
+            <tr>
+                <td class="px-4 py-3"><a class="text-pollen4" href="{% url 'leads:lead_detail' lead.pk %}">{{ lead.first_name }}</a></td>
+                <td class="px-4 py-3">{{ lead.last_name }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="lg:w-2/3 w-full mx-auto overflow-auto">
-      <table class="table-auto w-full text-left whitespace-no-wrap">
-        <thead>
-          <tr>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">First Name</th>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Last Name</th>
-            <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for lead in category.leads.all %}
-          <tr>
-            <td class="px-4 py-3"><a class="hover:text-blue-300" href="{% url 'leads:lead_detail' lead.pk %}">{{ lead.first_name }}</a></td>
-            <td class="px-4 py-3"><a class="hover:text-blue-300" href="{% url 'leads:lead_detail' lead.pk %}">{{ lead.last_name }}t</a></td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-  </div>
+  </section>
 </section>
 {% endblock %}

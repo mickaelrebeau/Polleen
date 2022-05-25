@@ -1,48 +1,60 @@
 {% extends "bas3.html"%}
 
 {% block content %}
-<nav class="md:ml-auto md:mr-auto pt-5 pb-5 flex flex-wrap items-center text-base justify-center bg-yellow-400">
-  <a href="{% url 'ia:ia' %}" class="mr-5 hover:text-blue-500">Retour</a>
-</nav>
-<section class="text-gray-600 body-font">
-  <div class="container px-5 pb-24 mx-auto mt-5">
-    <div class="flex flex-col text-center w-full mb-20">
-      <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Historique</h1>
-      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Ici, vous retrouverez l'historique complet des profils qui vous ont été recommander</p>
+<section class="pl-60 pb-24">
+  <nav class="md:ml-auto md:mr-auto pt-5 pb-5 flex flex-wrap items-center text-base justify-center pollen3">
+    <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">Historique</h1>
+  </nav>
+  <nav class="md:ml-auto md:mr-auto pt-5 pb-5 flex flex-wrap items-center text-base justify-center">
+    <section class="frame mr-5">
+      <a href="{% url 'ia:ia' %}">
+        <span class="text">Retour</span>
+        <span class="line -right"></span>
+        <span class="line -top"></span>
+        <span class="line -left"></span>
+        <span class="line -bottom"></span>
+      </a>
+    </section>
+  </nav>
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 pb-24 mx-auto mt-5">
+      <div class="flex flex-col text-center w-full mb-20">
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Ici, vous retrouverez l'historique complet des profils qui vous ont été recommander</p>
+      </div>
+      <div class="lg:w-2/3 w-full mx-auto overflow-auto">
+        <table class="table-auto w-full text-left whitespace-no-wrap">
+          <thead>
+            <tr>
+              <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">Nom Complet</th>
+              <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Company</th>
+              <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Post</th>
+              <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">URL</th>
+              <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br">Etat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="px-4 py-3">Marie-Anne Vincent</td>
+              <td class="px-4 py-3">Carbon4 Finance</td>
+              <td class="px-4 py-3">Directrice générale</td>
+              <td class="px-4 py-3 text-lg text-gray-900">Link</td>
+              <td class="w-10 text-center">
+                <button class="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Ajouter</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="border-t-2 border-gray-200 px-4 py-3">Noah Deborde</td>
+              <td class="border-t-2 border-gray-200 px-4 py-3">Champagne Basket Féminin</td>
+              <td class="border-t-2 border-gray-200 px-4 py-3">Responsable pole animation</td>
+              <td class="border-t-2 border-gray-200 px-4 py-3 text-lg text-gray-900">Link</td>
+              <td class="border-t-2 border-gray-200 w-10 text-center">
+                <button class="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Ajouter</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="lg:w-2/3 w-full mx-auto overflow-auto">
-      <table class="table-auto w-full text-left whitespace-no-wrap">
-        <thead>
-          <tr>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">Nom Complet</th>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Company</th>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Post</th>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">URL</th>
-            <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br">Etat</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="px-4 py-3">Marie-Anne Vincent</td>
-            <td class="px-4 py-3">Carbon4 Finance</td>
-            <td class="px-4 py-3">Directrice générale</td>
-            <td class="px-4 py-3 text-lg text-gray-900">Link</td>
-            <td class="w-10 text-center">
-              <button class="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Ajouter</button>
-            </td>
-          </tr>
-          <tr>
-            <td class="border-t-2 border-gray-200 px-4 py-3">Noah Deborde</td>
-            <td class="border-t-2 border-gray-200 px-4 py-3">Champagne Basket Féminin</td>
-            <td class="border-t-2 border-gray-200 px-4 py-3">Responsable pole animation</td>
-            <td class="border-t-2 border-gray-200 px-4 py-3 text-lg text-gray-900">Link</td>
-            <td class="border-t-2 border-gray-200 w-10 text-center">
-              <button class="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Ajouter</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  </section>
 </section>
 {% endblock %}

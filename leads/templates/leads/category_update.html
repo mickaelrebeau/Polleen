@@ -2,29 +2,40 @@
 {% load tailwind_filters %}
 
 {% block content %}
-<nav class="md:ml-auto md:mr-auto pt-5 pb-5 flex flex-wrap items-center text-base justify-center bg-yellow-400">
-  <a href="{% url 'leads:category_detail' category.pk %}" class="mr-5 hover:text-blue-500">Retour</a>
-</nav>
-<section class="text-gray-600 body-font overflow-hidden">
-  <div class="container px-5 py-8 ml-28">
-    <div class="lg:w-4/5 mx-auto flex flex-wrap">
-      <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
-        <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{ category.name }}</h1>
-        <div class="flex mb-4">
-          <a class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">Correction</a>
-        </div>
-        <form method="post">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <div class="flex">
-                <button type="submit" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-                    Valider
-                </button>
+<section class="pl-60 pb-24">
+  <nav class="md:ml-auto md:mr-auto pt-5 pb-5 flex flex-wrap items-center text-base justify-center pollen3">
+    <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">{{ category.name }}</h1>
+  </nav>
+  <nav class="md:ml-auto md:mr-auto pt-5 pb-5 flex flex-wrap items-center text-base justify-center">
+    <section class="frame mr-5">
+      <a href="{% url 'leads:category_detail' category.pk %}">
+        <span class="text">Retour</span>
+        <span class="line -right"></span>
+        <span class="line -top"></span>
+        <span class="line -left"></span>
+        <span class="line -bottom"></span>
+      </a>
+    </section>
+    </nav>
+    <section class="text-gray-600 body-font overflow-hidden">
+      <div class="px-5 py-8 lg:ml-28 sm:ml-5">
+        <div class="lg:w-auto mx-auto flex">
+          <div class="lg:w-3/4 lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+            <div class="flex mb-4">
+              <a class="flex-grow text-pollen4 border-b-2 bc-pollen4 py-2 text-lg px-1">Correction</a>
             </div>
-        </form>
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="flex">
+                    <button type="submit" class="flex ml-auto text-white pollen4 border-0 py-2 px-6 focus:outline-none hover:bg-gray-400 rounded">
+                        Valider
+                    </button>
+                </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400">
-    </div>
-  </div>
+    </section>
 </section>
 {% endblock %}
