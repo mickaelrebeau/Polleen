@@ -20,7 +20,7 @@ class DocsCreateView(AgentAndLoginRequiredMixin, CreateView):
 
 class DocsDetailView(AgentAndLoginRequiredMixin, DetailView):
     template_name = 'docs/docs_detail.html'
-    context_object_name = 'docs'
+    context_object_name = 'doc'
     queryset = Doc.objects.all()
 
 

@@ -12,4 +12,5 @@ class DocsModelForm(forms.ModelForm):
             'author_1',
             'author_2',
             'document',
+            'document_suplementaire',
         ]
