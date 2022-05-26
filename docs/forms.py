@@ -11,4 +11,6 @@ class DocsModelForm(forms.ModelForm):
             'description',
             'author_1',
             'author_2',
+            'document',
+            'date',
         ]
