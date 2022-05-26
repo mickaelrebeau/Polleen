@@ -9,10 +9,7 @@ from docs.models import Doc
 class DocsListView(LoginRequiredMixin, ListView):
     template_name = 'docs/docs_list.html'
     context_object_name = 'docs'
-
-    def get_queryset(self):
-        queryset = Doc.objects.all()
-        return queryset
+    queryset = Doc.objects.all()
 
 
 class DocsCreateView(AgentAndLoginRequiredMixin, CreateView):
@@ -23,7 +20,6 @@ class DocsCreateView(AgentAndLoginRequiredMixin, CreateView):
     def form_valid(self, form):
         user = form.save(commit=False)
         user.is_agent = True
-        user.is_organiser = False
         user.save()
         return super().form_valid(form)
 
@@ -31,10 +27,7 @@ class DocsCreateView(AgentAndLoginRequiredMixin, CreateView):
 class DocsDetailView(AgentAndLoginRequiredMixin, DetailView):
     template_name = 'docs/docs_detail.html'
     context_object_name = 'docs'
-
-    def get_queryset(self):
-        queryset = Doc.objects.all()
-        return queryset
+    queryset = Doc.objects.all()
 
 
 class DocsUpdateView(AgentAndLoginRequiredMixin, UpdateView):
@@ -42,9 +35,7 @@ class DocsUpdateView(AgentAndLoginRequiredMixin, UpdateView):
     model = Doc
     form_class = DocsModelForm
     success_url = '/docs'
-
-    def get_queryset(self):
-        return Doc.objects.all()
+    queryset = Doc.objects.all()
 
 
 class DocsDeleteView(AgentAndLoginRequiredMixin, DeleteView):

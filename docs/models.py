@@ -7,9 +7,9 @@ class Doc(models.Model):
     description = models.TextField(default=None)
     author_1 = models.CharField(max_length=100, default=None)
     author_2 = models.CharField(max_length=100, default=None)
-    document = models.FileField(upload_to='docs/%Y/%m/%d/')
+    document = models.FileField(upload_to='docs/files/')
     uploaded_at = models.DateField(auto_now_add=True)
-    date = models.DateTimeField(auto_now_add=False)
+    date = models.DateField(auto_now=True)
 
     def __str__(self):
         return self.title
