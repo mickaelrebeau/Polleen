@@ -17,12 +17,6 @@ class DocsCreateView(AgentAndLoginRequiredMixin, CreateView):
     form_class = DocsModelForm
     success_url = '/docs'
 
-    def form_valid(self, form):
-        user = form.save(commit=False)
-        user.is_agent = True
-        user.save()
-        return super().form_valid(form)
-
 
 class DocsDetailView(AgentAndLoginRequiredMixin, DetailView):
     template_name = 'docs/docs_detail.html'

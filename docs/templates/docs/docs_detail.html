@@ -1,45 +1,58 @@
 {% extends "bas3.html"%}
 
 {% block content %}
-<nav class="md:ml-auto md:mr-auto py-5 flex flex-wrap items-center text-base justify-center bg-yellow-400">
-  <a href="{% url 'docs:docs_list' %}" class="mr-5 hover:text-blue-500">Retour</a>
-</nav>
-<section class="text-gray-600 body-font overflow-hidden">
-  <div class="container px-40 py-12 mx-auto">
-    <div class="lg:w-4/5 mx-auto flex flex-wrap space-between">
-      <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
-        <h2 class="text-sm title-font text-gray-500 tracking-widest">Présentation</h2>
-        <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{ doc.title }}</h1>
-        <div class="flex mb-4">
-          <a class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">Description</a>
-        </div>
-        <div class="flex border-t border-gray-200 py-2">
-          <span class="text-gray-500">Author 1</span>
-          <span class="ml-auto text-gray-900">{{ doc.author_1 }}</span>
-        </div>
-          <div class="flex border-t border-gray-200 py-2">
-              <span class="text-gray-500">Author 2</span>
-              <span class="ml-auto text-gray-900">{{ doc.author_2 }}</span>
+<section class="pl-60 pb-24">
+  <nav class="md:ml-auto md:mr-auto pt-5 pb-5 flex flex-wrap items-center text-base justify-center pollen3">
+    <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">Documentation</h1>
+  </nav>
+  <nav class="md:ml-auto md:mr-auto pt-5 pb-5 flex flex-wrap items-center text-base justify-center">
+    <section class="frame mr-5">
+      <a href="{% url 'docs:docs_list' %}">
+        <span class="text">Retour</span>
+        <span class="line -right"></span>
+        <span class="line -top"></span>
+        <span class="line -left"></span>
+        <span class="line -bottom"></span>
+      </a>
+    </section>
+  </nav>
+  <section class="text-gray-600 body-font overflow-hidden">
+    <div class="container px-40 py-12 mx-auto">
+      <div class="lg:w-4/5 mx-auto flex flex-wrap space-between">
+        <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+          <h2 class="text-sm title-font text-gray-500 tracking-widest">Présentation</h2>
+          <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{ doc.title }}</h1>
+          <div class="flex mb-4">
+            <a class="flex-grow text-pollen4 border-b-2 bc-pollen4 py-2 text-lg px-1">Description</a>
           </div>
-        <p>Uploaded files:</p>
-        <ul>
-          <li>
-            <a href="{{ obj.doc.url }}">{{ doc.doc.name }}</a>
-            <small>(Uploaded at: {{ doc.uploaded_at }})</small>
-          </li>
-        </ul>
-          {% if request.user.is_agent %}
-        <div class="flex">
-          <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-              <a href="#">Mettre à jour</a>
-          </button>
-          <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-              <a href="#">Supprimer</a>
-          </button>
+          <div class="flex border-t border-gray-200 py-2">
+            <span class="text-gray-500">Author 1</span>
+            <span class="ml-auto text-gray-900">{{ doc.author_1 }}</span>
+          </div>
+            <div class="flex border-t border-gray-200 py-2">
+                <span class="text-gray-500">Author 2</span>
+                <span class="ml-auto text-gray-900">{{ doc.author_2 }}</span>
+            </div>
+          <p>Uploaded files:</p>
+          <ul>
+            <li>
+              <a href="{{ obj.doc.url }}">{{ doc.doc.name }}</a>
+              <small>(Uploaded at: {{ doc.uploaded_at }})</small>
+            </li>
+          </ul>
+            {% if request.user.is_agent %}
+          <div class="flex pt-5">
+            <button class="flex ml-auto text-white pollen4 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                <a href="#">Mettre à jour</a>
+            </button>
+            <button class="flex ml-auto text-white pollen2 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                <a href="#">Supprimer</a>
+            </button>
+          </div>
+            {% endif %}
         </div>
-          {% endif %}
       </div>
     </div>
-  </div>
+  </section>
 </section>
 {% endblock %}
