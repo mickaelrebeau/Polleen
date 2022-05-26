@@ -7,7 +7,7 @@ class Doc(models.Model):
     description = models.TextField(default=None)
     author_1 = models.CharField(max_length=100, default=None)
     author_2 = models.CharField(max_length=100, default=None)
-    document = models.FileField(upload_to='documents/', default=None, blank=True, null=True)
+    document = models.FileField(upload_to='docs/', default=None, blank=True, null=True)
 
     def __str__(self):
         return self.title
