@@ -1,3 +1,4 @@
+from django.core.validators import FileExtensionValidator
 from django.db import models
 
 
@@ -7,7 +8,8 @@ class Doc(models.Model):
     description = models.TextField(default=None)
     author_1 = models.CharField(max_length=100, default=None)
     author_2 = models.CharField(max_length=100, default=None)
-    document = models.FileField(upload_to='docs/files/')
+    document = models.FileField(upload_to='docs/files/',
+                                validators=[FileExtensionValidator(['jpg', 'png', 'gif', 'docx', 'pptx', 'pdf', ])],)
     document_suplementaire = models.FileField(upload_to='docs/files/', blank=True, null=True, default=None)
     uploaded_at = models.DateField(auto_now_add=True)
     date = models.DateField(auto_now=True)

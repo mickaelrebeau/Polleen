@@ -36,7 +36,4 @@ class DocsDeleteView(AgentAndLoginRequiredMixin, DeleteView):
     template_name = 'docs/docs_delete.html'
     model = Doc
     success_url = '/docs'
-
-    def get_queryset(self):
-        documents = self.request.user.userprofile
-        return Doc.objects.filter(documents=documents)
+    queryset = Doc.objects.all()
