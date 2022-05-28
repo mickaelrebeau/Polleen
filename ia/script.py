@@ -161,7 +161,7 @@ for prospect in prospects:
         }
         # save data in csv from a dict
         data = data.append(data, ignore_index=True)
-        Profiles.objects.create(
+        ia.objects.create(
             name=data.txt("name"),
             description=data.txt("description"),
             location=data.txt("location"),
