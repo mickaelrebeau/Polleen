@@ -2,21 +2,21 @@ import pandas as pd
 from django.shortcuts import render
 from django.views.generic import ListView
 from agents.mixins import AgentAndLoginRequiredMixin
-from ia.models import Ia
+from ia.models import *
 
 
 class IaView(AgentAndLoginRequiredMixin, ListView):
     template_name = 'ia/ia.html'
     context_object_name = 'ia_list'
     data = pd.read_csv('ia/profile_scrape.csv')
-    queryset = (Ia.objects.all(), data)
+    queryset = (ia.objects.all(), data)
 
 
 class IaHistoryView(AgentAndLoginRequiredMixin, ListView):
     template_name = 'ia/ia_history.html'
     context_object_name = 'ia_list'
     data = pd.read_csv('ia/profile_scrape.csv')
-    queryset = (Ia.objects.all(), data)
+    queryset = (ia.objects.all(), data)
 
 
 def output(request):
@@ -30,8 +30,10 @@ def output(request):
     import pandas as pd
     import environ
     from Polleen.settings import BASE
-    from ia.models import Ia
+    import psycopg2
 
+
+    # reading .env file
     os.environ['DJANGO_SETTINGS_MODULE'] = 'Polleen.settings'
     django.setup()
 
@@ -185,4 +187,27 @@ def output(request):
 
     df.to_csv(r'ia/profile_scrape.csv', encoding='utf-8', index=False, header=True)
     browser.quit()
+
+    conn = psycopg2.connect(database=env('DATABASE_NAME'), user=env('DATABASE_USER'), password=env('DATABASE_PASSWORD'),
+                            host=env('DATABASE_HOST'), port=env('DATABASE_PORT'))
+
+    conn.autocommit = True
+    cursor = conn.cursor()
+
+    sql = '''CREATE TABLE IF NOT EXISTS ia_ia (name VARCHAR(255), description VARCHAR(255),\
+        location VARCHAR(255),post VARCHAR(255), time VARCHAR(255), company VARCHAR(255), email VARCHAR(255),\
+        url VARCHAR(255))'''
+
+    cursor.execute(sql)
+
+    # sql2 = '''COPY ia_profile_scrape(name,description,location,post,time,company,email,url)\
+            # FROM 'profile_scrape.csv'
+            # DELIMITER ','
+            # CSV HEADER;'''
+
+    # cursor.execute(sql2)
+
+    conn.commit()
+    conn.close()
+
     return render(request, 'ia/ia.html')

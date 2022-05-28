@@ -64,6 +64,21 @@ DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
 ```
 
+Il en est de même pour la connection a la base de données. Ici, c'est de PostgreSQL.
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
+    }
+}
+```
+
 ## ⚔️ Agents
 Agents est la partie qui gère les admins vous pouvez ajouter et supprimer des admins. Elle n'est pas visible sur le CRM.
 

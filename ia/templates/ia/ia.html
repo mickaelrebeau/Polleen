@@ -30,39 +30,26 @@
   </nav>
   <section class="text-gray-600 body-font">
     <div class="container px-5 pt-5 pb-24 mx-auto items-center">
-      <div class="flex flex-col text-center w-full mb-20">
-        <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">Contact Recommander</h1>
+      <div class="flex flex-col text-center w-full mb-5">
         <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Vous trouverez ici la liste des contacts recommander</p>
       </div>
       <div class="flex flex-wrap -m-4 sm:ml-5 lg:ml-60 mt-5">
+        {% for ia in ias %}
         <div class="p-4 mb-4 lg:w-3/4 bg-white shadow-xl border-0 py-1 px-3 focus:outline-none rounded-xl">
           <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
             <div class="flex-grow sm:pl-8">
               <h2 class="title-font font-medium text-lg text-pollen1">
-                  <a href="#">Marie-Anne Vincent</a>
+                  <a href="#">{{ ia.name }}</a>
               </h2>
-                <h3 class="text-gray-500 mb-3"> Directrice générale </h3>
-                <p class="text-pollen4 mb-4"> Carbon4 Finance </p>
-                <p class="text-pollen4 mb-4"> Paris, Île-de-France, France </p>
+                <h3 class="text-gray-500 mb-3">{{ ia.post }}</h3>
+                <p class="text-pollen4 mb-4">{{ ia.company }}</p>
+                <p class="text-pollen4 mb-4">{{ ia.location }}</p>
             </div>
             <button class="ml-4 inline-flex text-white pollen2 border-0 py-2 px-6 focus:outline-none hover:bg-red-200 rounded text-lg">Supprimer</button>
             <button class="ml-4 inline-flex text-white pollen4 border-0 py-2 px-6 focus:outline-none hover:bg-blue-200 rounded text-lg">Ajouter</button>
           </div>
         </div>
-        <div class="p-4 lg:w-3/4 bg-white shadow-xl border-0 py-1 px-3 focus:outline-none rounded-xl">
-          <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-            <div class="flex-grow sm:pl-8">
-              <h2 class="title-font font-medium text-lg text-pollen1">
-                  <a href="#">Noah Deborde</a>
-              </h2>
-                <h3 class="text-gray-500 mb-3"> Responsable pole animation </h3>
-                <p class="text-pollen4 mb-4"> Champagne Basket Féminin </p>
-                <p class="text-pollen4 mb-4"> Reims, Grand Est, France </p>
-            </div>
-            <button class="ml-4 inline-flex text-white pollen2 border-0 py-2 px-6 focus:outline-none hover:bg-red-200 rounded text-lg">Supprimer</button>
-            <button class="ml-4 inline-flex text-white pollen4 border-0 py-2 px-6 focus:outline-none hover:bg-blue-200 rounded text-lg">Ajouter</button>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </div>
