@@ -11,3 +11,6 @@ class ia(models.Model):
     email = models.EmailField(max_length=100, blank=True, null=True, default=None)
     url = models.URLField(max_length=200)
 
+    def __str__(self):
+        return self.name
+

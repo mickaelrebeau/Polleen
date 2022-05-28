@@ -8,15 +8,13 @@ from ia.models import *
 class IaView(AgentAndLoginRequiredMixin, ListView):
     template_name = 'ia/ia.html'
     context_object_name = 'ia_list'
-    data = pd.read_csv('ia/profile_scrape.csv')
-    queryset = (ia.objects.all(), data)
+    queryset = ia.objects.all()
 
 
 class IaHistoryView(AgentAndLoginRequiredMixin, ListView):
     template_name = 'ia/ia_history.html'
     context_object_name = 'ia_list'
-    data = pd.read_csv('ia/profile_scrape.csv')
-    queryset = (ia.objects.all(), data)
+    queryset = ia.objects.all()
 
 
 def output(request):
@@ -31,7 +29,6 @@ def output(request):
     import environ
     from Polleen.settings import BASE
     import psycopg2
-
 
     # reading .env file
     os.environ['DJANGO_SETTINGS_MODULE'] = 'Polleen.settings'
@@ -194,16 +191,16 @@ def output(request):
     conn.autocommit = True
     cursor = conn.cursor()
 
-    sql = '''CREATE TABLE IF NOT EXISTS ia_ia (name VARCHAR(255), description VARCHAR(255),\
+    sql = '''CREATE TABLE IF NOT EXISTS ia_ia (id int NOT NULL, name VARCHAR(255), description VARCHAR(255),\
         location VARCHAR(255),post VARCHAR(255), time VARCHAR(255), company VARCHAR(255), email VARCHAR(255),\
         url VARCHAR(255))'''
 
     cursor.execute(sql)
 
     # sql2 = '''COPY ia_profile_scrape(name,description,location,post,time,company,email,url)\
-            # FROM 'profile_scrape.csv'
-            # DELIMITER ','
-            # CSV HEADER;'''
+    # FROM 'profile_scrape.csv'
+    # DELIMITER ','
+    # CSV HEADER;'''
 
     # cursor.execute(sql2)
 
