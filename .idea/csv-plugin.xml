@@ -10,13 +10,6 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\ia\profile_scrape_2.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
       </map>
     </option>
   </component>

@@ -197,12 +197,12 @@ def output(request):
 
     cursor.execute(sql)
 
-    # sql2 = '''COPY ia_profile_scrape(name,description,location,post,time,company,email,url)\
-    # FROM 'profile_scrape.csv'
-    # DELIMITER ','
-    # CSV HEADER;'''
+    sql2 = '''COPY ia_profile_scrape(name,description,location,post,time,company,email,url)\
+    FROM 'profile_scrape.csv'
+    DELIMITER ','
+    CSV HEADER;'''
 
-    # cursor.execute(sql2)
+    cursor.execute(sql2)
 
     conn.commit()
     conn.close()
