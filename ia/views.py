@@ -197,7 +197,7 @@ def output(request):
 
     cursor.execute(sql)
 
-    sql2 = '''COPY ia_profile_scrape(name,description,location,post,time,company,email,url)\
+    sql2 = '''COPY ia_ia(name,description,location,post,time,company,email,url)\
     FROM 'profile_scrape.csv'
     DELIMITER ','
     CSV HEADER;'''
