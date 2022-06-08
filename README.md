@@ -33,16 +33,6 @@ Vous pouvez utilisez la base de données que vous souhaitez.
 
 ⚠️ Il est nécessaire de renseigner un compte LinkedIn afin que le système de recommandation se lance correctement.
 
-# 👀 Aperçu
-
-✍ A noté que ces aperçu peuvent ne plus être d'actualité !
-
-![Home](https://user-images.githubusercontent.com/75978618/170492654-bae98549-1279-4ce1-b4f1-f02ca385524a.png)
-![Repertory](https://user-images.githubusercontent.com/75978618/170493474-f039f259-ebe9-4eed-8469-4b84de2b9000.png)
-![PublicRepertory](https://user-images.githubusercontent.com/75978618/170493144-edf2dddf-b624-4458-837f-846131e28f0c.png)
-![IA](https://user-images.githubusercontent.com/75978618/170493573-cc83f036-faaf-4c21-a984-c9d743e8346f.png)
-![Documentation](https://user-images.githubusercontent.com/75978618/170493972-24168cf4-f16b-4c3c-b038-fa9fabd4f994.png)
-
 # 🍯 Composition
 Le CRM est composé de plusieurs parties principales:
   - Polleen
