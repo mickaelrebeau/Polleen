@@ -96,7 +96,7 @@ IA est la partie consacrée au système de recommendation.
 
 Un **CSV** est mis à disposition, **ia/profile_scrape.csv**. Il contient les profiles qui ont été récuperer sur LinkedIn.
 
-**Image**
+![CSV](https://user-images.githubusercontent.com/75978618/172589201-bde438ca-567e-4941-a45a-c0ea27fcd51d.png)
 
 **ia/script.py** est le script qui se charge de scraper les profiles sur LinkedIn.
 
@@ -105,7 +105,7 @@ Un **CSV** est mis à disposition, **ia/profile_scrape.csv**. Il contient les pr
 C'est dans le script **ia/views.py** que l'on retrouve l'exécution de tous les scripts. C'est grâce à cela que l'on peut tout exécuter depuis un simple bouton sur l'interface.
 Il enregistre ensuite tous les nouveaux profiles dans la base de données posqtegreSQL dans mon cas.
 
-**Image**
+![save to bdd](https://user-images.githubusercontent.com/75978618/172589305-3bb67450-39c0-4414-a63c-2fd189805afa.png)
 
 ## 👥 Leads
 Leads est la partie qui s'occuper du répertoire et du répertoire public. Mais elle s'occupe également de quelques 
@@ -114,5 +114,10 @@ Leads est la partie qui s'occuper du répertoire et du répertoire public. Mais 
 **leads/view.py** permet d'afficher la page d'accueil, les pages liées au répertoire et au répertoire public,
 les pages d'inscription et de connexion, ainsi que les pages liées aux catégories des contacts.
 
-**Images**
+![home](https://user-images.githubusercontent.com/75978618/172589348-b59e3e0f-39d0-46c6-a2d1-850d892433a6.png)
+![leads-list](https://user-images.githubusercontent.com/75978618/172589367-316f626e-bc86-4ddd-a8e7-43f541d271d7.png)
+![signup](https://user-images.githubusercontent.com/75978618/172589382-b7c0663d-a187-46c6-b7f0-07c9ef18e637.png)
+![invited-leads-list](https://user-images.githubusercontent.com/75978618/172589408-a27e02ef-866f-4e80-89f8-8d7a91862984.png)
+![category-list](https://user-images.githubusercontent.com/75978618/172589429-033be0fe-c3e6-4b2e-95d3-06659866ec15.png)
+
 
