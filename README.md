@@ -89,9 +89,30 @@ Si le projet possède un nom de domaine alors il faudra le renseigner à la plac
 ## 🗄 Docs
 Docs est la partie où l'on retrouve l'historique des présentations Pollen.
 
+Seul un administrateur peut supprimer, ajouter ou modifier un contenue.
+
 ## 🤖 IA, système de recommandation
-IA est la partie consacré au système de recommendation.
+IA est la partie consacrée au système de recommendation.
+
+Un **CSV** est mis à disposition, **ia/profile_scrape.csv**. Il contient les profiles qui ont été récuperer sur LinkedIn.
+
+**Image**
+
+**ia/script.py** est le script qui se charge de scraper les profiles sur LinkedIn.
+
+**ia/classification.py** est le script qui trie les profiles afin de proposer uniquement les profiles intéressants.
+
+C'est dans le script **ia/views.py** que l'on retrouve l'exécution de tous les scripts. C'est grâce à cela que l'on peut tout exécuter depuis un simple bouton sur l'interface.
+Il enregistre ensuite tous les nouveaux profiles dans la base de données posqtegreSQL dans mon cas.
+
+**Image**
 
 ## 👥 Leads
 Leads est la partie qui s'occuper du répertoire et du répertoire public. Mais elle s'occupe également de quelques 
-éléments supplémentaires que nous verrons dans le fichier leads/view.py.
+éléments supplémentaires que nous verrons dans le fichier **leads/view.py**.
+
+**leads/view.py** permet d'afficher la page d'accueil, les pages liées au répertoire et au répertoire public,
+les pages d'inscription et de connexion, ainsi que les pages liées aux catégories des contacts.
+
+**Images**
+
