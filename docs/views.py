@@ -18,7 +18,7 @@ class DocsCreateView(AgentAndLoginRequiredMixin, CreateView):
     success_url = '/docs'
 
 
-class DocsDetailView(AgentAndLoginRequiredMixin, DetailView):
+class DocsDetailView(LoginRequiredMixin, DetailView):
     template_name = 'docs/docs_detail.html'
     context_object_name = 'doc'
     queryset = Doc.objects.all()
