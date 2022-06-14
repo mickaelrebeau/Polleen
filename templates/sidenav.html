@@ -11,7 +11,7 @@
     </li>
     {% if request.user.is_agent %}
     <li class="relative">
-      <a href="{% url 'agents:agents_list' %}" class="flex items-center text-xl py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">Administrateurs</a>
+      <a href="{% url 'agents:agents_list' %}" class="flex items-center text-xl py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark">Administrateurs</a>
     </li>
     {% endif %}
     <li class="relative">
@@ -22,7 +22,7 @@
     </li>
     {% if request.user.is_agent %}
     <li class="relative">
-      <a href="{% url 'ia:ia' %}" class="flex items-center text-xl py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">Contact recommander</a>
+      <a href="{% url 'ia:ia' %}" class="flex items-center text-xl py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark">Contact recommander</a>
     </li>
     {% endif %}
     <li class="relative">
@@ -32,7 +32,10 @@
       <a class="flex items-center text-xl py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">Messagerie (Soon..)</a>
     </li>
     <li class="relative">
-      <a href="{% url 'docs:docs_list' %}" class="flex items-center text-xl py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">Documentation</a>
+      <a href="{% url 'docs:docs_list' %}" class="flex items-center text-xl py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark">Documentation</a>
+    </li>
+    <li class="relative">
+      <a href="{% url 'aide' %}" class="flex items-center text-xl py-4 px-6 h-12 overflow-hidden text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark">Aide</a>
     </li>
   </ul>
 </div>

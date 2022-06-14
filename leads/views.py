@@ -14,6 +14,10 @@ class HomePageView(TemplateView):
     template_name = 'accueil.html'
 
 
+class HelpPageView(TemplateView):
+    template_name = 'aide.html'
+
+
 class LeadListView(LoginRequiredMixin, ListView):
     template_name = 'leads/lead_list.html'
     context_object_name = 'leads'

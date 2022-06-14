@@ -5,10 +5,11 @@ from django.contrib.auth.views import LoginView, PasswordResetView, PasswordRese
     PasswordResetCompleteView
 from django.urls import path, include
 
-from leads.views import HomePageView, SignupView
+from leads.views import HelpPageView, SignupView, HomePageView
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
+    path('aide/', HelpPageView.as_view(), name='aide'),
     path('admin/', admin.site.urls),
     path('leads/', include('leads.urls', namespace="leads")),
     path('agents/', include('agents.urls', namespace="agents")),
