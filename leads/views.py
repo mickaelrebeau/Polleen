@@ -91,7 +91,7 @@ class LeadDeleteView(LoginRequiredMixin, DeleteView):
         return Lead.objects.filter(organisation=user.userprofile)
 
 
-class SignupView(LoginRequiredMixin, CreateView):
+class SignupView(CreateView):
     template_name = 'registration/signup.html'
     form_class = CustomUserCreationForm
     success_url = '/login'
