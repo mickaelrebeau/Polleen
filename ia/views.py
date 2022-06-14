@@ -32,7 +32,6 @@ def output(request):
     from nltk.corpus import stopwords
     from sklearn.model_selection import train_test_split
     from sklearn.feature_extraction.text import TfidfVectorizer
-    from sklearn.linear_model import LogisticRegression
     from wordcloud import WordCloud
     from matplotlib import pyplot as plt
     from sklearn.neighbors import KNeighborsClassifier
