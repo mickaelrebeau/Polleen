@@ -29,6 +29,15 @@ def output(request):
     import environ
     from Polleen.settings import BASE
     import psycopg2
+    from nltk.corpus import stopwords
+    from sklearn.model_selection import train_test_split
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.linear_model import LogisticRegression
+    from wordcloud import WordCloud
+    from matplotlib import pyplot as plt
+    from sklearn.neighbors import KNeighborsClassifier
+    from sklearn import metrics
+    import pickle
 
     # reading .env file
     os.environ['DJANGO_SETTINGS_MODULE'] = 'Polleen.settings'
@@ -206,5 +215,57 @@ def output(request):
 
     conn.commit()
     conn.close()
+
+    wordcloud = WordCloud(max_words=100, background_color="white").generate(str(df["Description"]))
+    plt.figure(figsize=(20, 20))
+    plt.imshow(wordcloud, interpolation="bilinear")
+    plt.axis("off")
+    print(plt.show())
+
+    df_label = df[:150]
+
+    annotation = [0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1,
+                  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0,
+                  0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+                  0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+                  1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+
+    df_label['Annoted'] = annotation
+
+    plt.scatter(df_label['Annoted'], df_label['Location'])
+    print(plt.show())
+
+    df_unlabel = df[150:]
+
+    df_label["All"] = df_label["Description"].fillna('') + " " + df_label["Location"].fillna('') + " " + df_label["Post"].fillna('') + " " + df_label["Company"].fillna('')
+
+    df_unlabel["All"] = df_unlabel["Description"].fillna('') + " " + df_unlabel["Location"].fillna('') + " " + df_unlabel["Post"].fillna('') + " " + df_unlabel["Company"].fillna('')
+
+    stopWords = set(stopwords.words('french', 'english'))
+
+    # vectorize the post
+    vectorizer = TfidfVectorizer(stop_words=stopWords)
+
+    X = vectorizer.fit_transform(df_label['All'].values.astype('U'))
+    y = df_label["Annoted"]
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=5)
+
+    model_1 = KNeighborsClassifier(n_neighbors=5)
+
+    # Train the model using the training sets y_pred=clf.predict(X_test)
+    model_1.fit(X_train, y_train)
+
+    y_pred = model_1.predict(X_test)
+    score = model_1.score(X_test, y_test)
+
+    print("Accuracy:", score)
+
+    filename = 'model_1.sav'
+    pickle.dump(model_1, open(filename, 'wb'))
+
+    y_pred = model_1.predict(X_test)
+    cnf_matrix = metrics.confusion_matrix(y_test, y_pred)
+    print(cnf_matrix)
 
     return render(request, 'ia/ia.html')
