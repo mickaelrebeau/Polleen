@@ -216,7 +216,7 @@ def output(request):
     conn.commit()
     conn.close()
 
-    wordcloud = WordCloud(max_words=100, background_color="white").generate(str(df["Description"]))
+    wordcloud = WordCloud(max_words=150, background_color="white").generate(str(df["Description"]))
     plt.figure(figsize=(20, 20))
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
