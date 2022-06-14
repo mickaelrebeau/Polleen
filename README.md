@@ -110,4 +110,20 @@ les pages d'inscription et de connexion, ainsi que les pages liées aux catégor
 ![invited-leads-list](https://user-images.githubusercontent.com/75978618/172589408-a27e02ef-866f-4e80-89f8-8d7a91862984.png)
 ![category-list](https://user-images.githubusercontent.com/75978618/172589429-033be0fe-c3e6-4b2e-95d3-06659866ec15.png)
 
+## 👨‍💻 Commandes
 
+Les commandes ci-dessous servent à mettre à jour les modifications de Polleen (le création d'une nouvelle partie par exemple).
+
+```python
+python manage.py makemigrations
+```
+
+```python
+python manage.py migrate
+```
+
+Voici les commandes pour créer les administrateurs.
+
+```python
+python manage.py createsuperuser
+```
